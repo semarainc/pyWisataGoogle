@@ -80,4 +80,4 @@ def getWisata(q=None):
 	#NOTE : Meskipun bisa menggunakan variabel _ namun saya rasa menggunakan variabel i lebih mudah dipahami hehehe :v
 	return r_wisata
 
-print(getWisata('jakarta')[0])
+print(getWisata('jakarta')) # Memberikan 50 Hasil Pencarian
