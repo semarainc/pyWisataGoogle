@@ -12,7 +12,6 @@ from bs4 import BeautifulSoup as soup
 import requests, json
 
 def getWisata(q=None):
-	r_wisata = {"results":[]}
 	headers= {
 			"User-Agent" : "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36"
 		}
@@ -29,6 +28,7 @@ def getWisata(q=None):
 			)
 	soup_data = soup(data.text, 'html5lib')
 	body = soup_data.find_all("div",class_="Qc6URd eie4Pc")
+	r_wisata = {"results":[],"base_url":data.url}
 	for i in body:
 		sinopsis  = i.find("p", class_="sBeoSd")
 		try:
@@ -47,7 +47,6 @@ def getWisata(q=None):
 				"review":review,
 				"sinopsis":sinopsis,
 				"image":i.find("img")["src"],
-				"url":data.url
 			})
-		print(json.dumps(r_wisata, indent=4))
+		return json.dumps(r_wisata, indent=4)
 getWisata('jakarta')
