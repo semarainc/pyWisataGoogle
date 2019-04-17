@@ -74,6 +74,7 @@ def getWisata(q=None):
 			"nama" : str(nama_wisata[i]),
 			"rating" : str(rating_wisata[i]),
 			"gambar" : str(gambar[i]),
+			"sinopsis" : sinopsis[i],
 			"link" : "https://www.google.com"+str(link)
 		}
 
