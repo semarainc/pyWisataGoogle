@@ -57,17 +57,14 @@ def parse_url(link):
 		sinopsis  = i.find("p", class_="sBeoSd")
 		try:
 			prebody = i.find("div", class_="UhR2gd")
-			rate = prebody.find("span",attrs={"class":"rtng"}).text
 			review = prebody.find("g-review-stars").find("span")["aria-label"]
 		except AttributeError:
-			rate = None
 			review = None
 		
 		if not sinopsis is None:
 			sinopsis = sinopsis.text
 			r_wisata["results"].append({
 				"nama":i.find("h2",class_="NbdpWc").text,
-				"rating":rate,
 				"review":review,
 				"sinopsis":sinopsis,
 				"image":i.find("img")["src"]
